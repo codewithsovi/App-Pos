@@ -17,4 +17,13 @@
             </div>
         </div>
     </div>
+
+    <ul class="navbar-nav ml-auto">
+        <!-- Navbar Search -->
+        <li class="nav-item">
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn text-danger">Logout</button>
+            </form>
+        </li>
 </nav>
