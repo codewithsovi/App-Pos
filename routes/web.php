@@ -21,7 +21,10 @@ Route::middleware('auth')->group(function () {
     Route::prefix('kategori')->as('kategori.')->controller(KategoriController::class)->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
+        Route::put('/{id}/update', 'update')->name('update');
+        Route::delete('/{id}/destroy', 'destroy')->name('destroy');
     });
+
     Route::prefix('produk')->as('produk.')->controller(ProdukController::class)->group(function () {
         Route::get('/', 'index')->name('index');
     });
