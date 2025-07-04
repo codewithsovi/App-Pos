@@ -1,40 +1,67 @@
 @extends('layouts.app')
 
 @section('content')
+    <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Data Kategori</h3>
+                            <h3 class="card-title">Tabel Produk -{{ $kategoris->id }} </h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-hover">
+
+                            {{-- @if ($errors->any())
+                                <div class="alert alert-danger d-flex flex-column">
+                                    @foreach ($errors->all() as $error)
+                                        <small class="text-white my-2">{{ $error }}</small>
+                                    @endforeach
+                                </div>
+                            @endif --}}
+
+                            <div class="d-flex justify-content-end mb-2">
+                                @include('MasterData.produk.components.modal-create')
+                            </div>
+                            <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Produk</th>
-                                        <th>Deskripsi</th>
+                                        <th>SKU</th>
+                                        <th>Harga Jual</th>
+                                        <th>Harga Beli Pokok</th>
+                                        <th>Stock</th>
+                                        <th>Stock Minimal</th>
+                                        <th>Atatus</th>
                                         <th>Aksi</th>
-                                        <th>Show</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Mozilla 1.6</td>
-                                        <td>Win 95+ / OSX.1+</td>
-                                        <td>
-                                            <a href="">
+                                    @foreach ($kategoris->produks as $index => $produk)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $produk->nama_produk }}</td>
+                                            <td>{{ $produk->sku}}</td>
+                                            <td>{{ $produk->harga_jual}}</td>
+                                            <td>{{ $produk->harga_beli_pokok}}</td>
+                                            <td>{{ $produk->stock}}</td>
+                                            <td>{{ $produk->stock_min}}</td>
+                                            <td>{{ $produk->is_active}}</td>
+                                            <td class="d-flex justify-content-center">
+                                                <a href="" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#modal-edit">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </a>
 
-                                                <i class="fas fa-pencil-alt"></i></a>
-                                            <a href=""><i class="fas fa-trash-alt"></i></a>
-
-                                        </td>
-                                        <td><a href=""><i class="far fa-eye"></i></a></td>
-                                    </tr>
+                                                <a href="" data-confirm-delete="true" class="btn btn-danger">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                            @include('MasterData.produk.components.modal-edit')
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

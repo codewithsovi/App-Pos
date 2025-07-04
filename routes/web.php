@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('produk')->as('produk.')->controller(ProdukController::class)->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/kategori/{kategoriId}', 'byKategori')->name('byKategori');
     });
 });
 });

@@ -55,7 +55,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="{{ route('master-data.produk.index') }}">
+                                                <a href="{{ route('master-data.produk.byKategori', $kategori->id) }}">
                                                     <i class="far fa-eye"></i>
                                                 </a>
                                             </td>
