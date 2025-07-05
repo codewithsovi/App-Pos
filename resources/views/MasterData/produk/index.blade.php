@@ -8,18 +8,12 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Tabel Produk -{{ $kategoris->id }} </h3>
+                            <h3 class="card-title">Tabel Produk - {{ $kategoris->nama_kategori }} </h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
 
-                            {{-- @if ($errors->any())
-                                <div class="alert alert-danger d-flex flex-column">
-                                    @foreach ($errors->all() as $error)
-                                        <small class="text-white my-2">{{ $error }}</small>
-                                    @endforeach
-                                </div>
-                            @endif --}}
+                            @include('components.alert')
 
                             <div class="d-flex justify-content-end mb-2">
                                 @include('MasterData.produk.components.modal-create')
@@ -28,8 +22,8 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Produk</th>
                                         <th>SKU</th>
+                                        <th>Produk</th>
                                         <th>Harga Jual</th>
                                         <th>Harga Beli Pokok</th>
                                         <th>Stock</th>
@@ -42,20 +36,21 @@
                                     @foreach ($kategoris->produks as $index => $produk)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $produk->sku }}</td>
                                             <td>{{ $produk->nama_produk }}</td>
-                                            <td>{{ $produk->sku}}</td>
-                                            <td>{{ $produk->harga_jual}}</td>
-                                            <td>{{ $produk->harga_beli_pokok}}</td>
-                                            <td>{{ $produk->stock}}</td>
-                                            <td>{{ $produk->stock_min}}</td>
-                                            <td>{{ $produk->is_active}}</td>
+                                            <td>Rp. {{ number_format($produk->harga_jual) }}</td>
+                                            <td>Rp. {{ number_format($produk->harga_beli_pokok) }}</td>
+                                            <td>{{ $produk->stock }}</td>
+                                            <td>{{ $produk->stock_min }}</td>
+                                            <td>{{ $produk->is_active }}</td>
                                             <td class="d-flex justify-content-center">
                                                 <a href="" class="btn btn-primary" data-toggle="modal"
                                                     data-target="#modal-edit">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
 
-                                                <a href="" data-confirm-delete="true" class="btn btn-danger">
+                                                <a href="{{ route('master-data.produk.destroy', $produk->id) }}"
+                                                    data-confirm-delete="true" class="btn btn-danger">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>

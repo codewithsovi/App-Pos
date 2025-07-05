@@ -17,17 +17,28 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::prefix('master-data')->as('master-data.')->group(function () {
-    Route::prefix('kategori')->as('kategori.')->controller(KategoriController::class)->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::post('/', 'store')->name('store');
-        Route::put('/{id}/update', 'update')->name('update');
-        Route::delete('/{id}/destroy', 'destroy')->name('destroy');
-    });
+    Route::prefix('master-data')
+        ->as('master-data.')
+        ->group(function () {
+            Route::prefix('kategori')
+                ->as('kategori.')
+                ->controller(KategoriController::class)
+                ->group(function () {
+                    Route::get('/', 'index')->name('index');
+                    Route::post('/', 'store')->name('store');
+                    Route::put('/{id}/update', 'update')->name('update');
+                    Route::delete('/{id}/destroy', 'destroy')->name('destroy');
+                });
 
-    Route::prefix('produk')->as('produk.')->controller(ProdukController::class)->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/kategori/{kategoriId}', 'byKategori')->name('byKategori');
-    });
-});
+            Route::prefix('produk')
+                ->as('produk.')
+                ->controller(ProdukController::class)
+                ->group(function () {
+                    Route::get('/', 'index')->name('index');
+                    Route::get('/kategori/{kategori}', 'byKategori')->name('byKategori');
+                    Route::post('/kategori/{kategori}/store', 'store')->name('store');
+                    Route::put('/kategori/{kategori}/update', 'update')->name('update');
+                    Route::delete('/{produk}/destroy', 'destroy')->name('destroy');
+                });
+        });
 });

@@ -26,11 +26,11 @@ class KategoriController extends Controller
                 'deskripsi' => 'required|max:100|min:10',
             ],
             [
-                'nama_kategori.required' => 'nama kategori harus diisi',
-                'nama_kategori.unique' => 'nama kategori sudah ada',
-                'deskripsi.required' => 'deskripsi harus diisi',
-                'deskripsi.max' => 'deskripsi maksimal 100 karakter',
-                'deskripsi.min' => 'deskripsi minimal 10 karekter',
+                'nama_kategori.required' => 'Nama kategori harus diisi',
+                'nama_kategori.unique' => 'Nama kategori sudah ada',
+                'deskripsi.required' => 'Deskripsi harus diisi',
+                'deskripsi.max' => 'Deskripsi maksimal 100 karakter',
+                'deskripsi.min' => 'Deskripsi minimal 10 karekter',
             ],
         );
 
@@ -56,11 +56,11 @@ class KategoriController extends Controller
                     'deskripsi' => 'required|max:100|min:10',
                 ],
                 [
-                    'nama_kategori.required' => 'nama kategori harus diisi',
-                    'nama_kategori.unique' => 'nama kategori sudah ada',
-                    'deskripsi.required' => 'deskripsi harus diisi',
-                    'deskripsi.max' => 'deskripsi maksimal 100 karakter',
-                    'deskripsi.min' => 'deskripsi minimal 10 karekter',
+                    'nama_kategori.required' => 'Nama kategori harus diisi',
+                    'nama_kategori.unique' => 'Nama kategori sudah ada',
+                    'deskripsi.required' => 'Deskripsi harus diisi',
+                    'deskripsi.max' => 'Deskripsi maksimal 100 karakter',
+                    'deskripsi.min' => 'Deskripsi minimal 10 karekter',
                 ],
             );
 
