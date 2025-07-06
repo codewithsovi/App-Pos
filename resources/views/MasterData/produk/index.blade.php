@@ -35,7 +35,7 @@
                             @include('components.alert')
 
                             <div class="d-flex justify-content-end mb-2">
-                                @include('MasterData.produk.components.modal-create')
+                                @include('MasterData.produk.modal-create')
                             </div>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
@@ -61,7 +61,11 @@
                                             <td>Rp. {{ number_format($produk->harga_beli_pokok) }}</td>
                                             <td>{{ $produk->stock }}</td>
                                             <td>{{ $produk->stock_min }}</td>
-                                            <td>{{ $produk->is_active }}</td>
+                                            <td>
+                                                <p class="badge {{ $produk->is_active ? 'badge-success' : 'badge-danger' }}">
+                                                    {{ $produk->is_active ? 'Aktif' : 'Tidak Aktif' }}
+                                                </p>
+                                            </td>
                                             <td class="d-flex justify-content-center">
                                                 <a href="" class="btn btn-primary" data-toggle="modal"
                                                     data-target="#modal-edit-{{ $produk->id }}">
@@ -79,7 +83,7 @@
                                                     </button>
                                                 </form>
                                             </td>
-                                            @include('MasterData.produk.components.modal-edit')
+                                            @include('MasterData.produk.modal-edit')
                                         </tr>
                                     @endforeach
                                 </tbody>

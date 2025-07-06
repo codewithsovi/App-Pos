@@ -28,6 +28,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('user.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Manajemen User
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item {{ request()->routeIs('master-data.*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="fas fa-server"></i>

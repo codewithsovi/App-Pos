@@ -41,7 +41,7 @@
                             <div class="d-flex justify-content-end mb-2">
 
 
-                                @include('MasterData.kategori.components.modal-create')
+                                @include('MasterData.kategori.modal-create')
                             </div>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
@@ -78,7 +78,7 @@
                                             </td>
                                         </tr>
 
-                                        @include('MasterData.kategori.components.modal-edit')
+                                        @include('MasterData.kategori.modal-edit')
                                     @endforeach
                                 </tbody>
                             </table>

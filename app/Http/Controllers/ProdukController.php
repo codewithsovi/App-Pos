@@ -37,7 +37,6 @@ class ProdukController extends Controller
                 'harga_beli_pokok' => 'required|numeric|min:0',
                 'stock' => 'required|numeric|min:0',
                 'stock_min' => 'required|numeric|min:0',
-                'is_active' => 'required',
             ],
             [
                 'nama_produk.required' => 'nama produk wajib diisi',
@@ -46,7 +45,6 @@ class ProdukController extends Controller
                 'harga_beli_pokok' => 'Harga beli pokok wajib diisi',
                 'stock' => 'Stock wajib diisi',
                 'stock_min' => 'Stock minimal wajib diisi',
-                'is_active' => 'Status produk wajib diisi',
             ],
         );
 
@@ -57,7 +55,7 @@ class ProdukController extends Controller
             'harga_beli_pokok' => $request->harga_beli_pokok,
             'stock' => $request->stock,
             'stock_min' => $request->stock_min,
-            'is_active' => $request->is_active,
+            'is_active' => $request->is_active ? 'true' : 'false',
             'kategori_id' => $kategori->id,
         ]);
         toast()->success('Data berhasil disimpan');
@@ -73,7 +71,7 @@ class ProdukController extends Controller
                 'harga_beli_pokok' => 'required|numeric|min:0',
                 'stock' => 'required|numeric|min:0',
                 'stock_min' => 'required|numeric|min:0',
-                'is_active' => 'required',
+                // 'is_active' => 'required',
             ],
             [
                 'nama_produk.required' => 'nama produk wajib diisi',
@@ -82,7 +80,7 @@ class ProdukController extends Controller
                 'harga_beli_pokok' => 'Harga beli pokok wajib diisi',
                 'stock' => 'Stock wajib diisi',
                 'stock_min' => 'Stock minimal wajib diisi',
-                'is_active' => 'Status produk wajib diisi',
+                // 'is_active' => 'Status produk wajib diisi',
             ],
         );
 
@@ -91,7 +89,7 @@ class ProdukController extends Controller
         $produk->harga_beli_pokok = $validated['harga_beli_pokok'];
         $produk->stock = $validated['stock'];
         $produk->stock_min = $validated['stock_min'];
-        $produk->is_active = $validated['is_active'];
+        $produk->is_active = $validated['is_active'] ? 'true' : 'false' ;
         $produk->kategori_id = $kategori->id;
 
         $produk->save();

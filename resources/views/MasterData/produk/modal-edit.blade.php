@@ -36,7 +36,7 @@
                      <div class="form-group my-1 d-flex flex-column">
                         <div class="d-flex align-items-center">
                             <label for="is_active"  class="mr-3">Produk Aktif?</label>
-                            <input type="checkbox" name="is_active" id="is_active">
+                            <input type="checkbox" name="is_active" id="is_active" value="{{ old('stock', $produk->is_active) }}">
                         </div>
                          <small class="text-secondary">Jika Aktif maka produk akan ditampilkan di halaman kasir</small>
                     </div>
