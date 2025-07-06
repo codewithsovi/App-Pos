@@ -17,23 +17,23 @@
                 <div class="modal-body">
                     <div class="form-group my-1">
                         <label for="nama_produk">Nama Produk</label>
-                        <input type="text" name="nama_produk" id="nama_produk" class="form-control">
+                        <input type="text" name="nama_produk" id="nama_produk" required class="form-control">
                     </div>
                     <div class="form-group my-1">
                         <label for="harga_jual">Harga Jual</label>
-                        <input type="number" name="harga_jual" id="harga_jual" class="form-control">
+                        <input type="number" name="harga_jual" id="harga_jual" required class="form-control">
                     </div>
                     <div class="form-group my-1">
                         <label for="harga_beli_pokok">Harga Beli Pokok</label>
-                        <input type="number" name="harga_beli_pokok" id="harga_beli_pokok" class="form-control">
+                        <input type="number" name="harga_beli_pokok" id="harga_beli_pokok" required class="form-control">
                     </div>
                      <div class="form-group my-1">
                         <label for="stock">Stock</label>
-                        <input type="number" name="stock" id="stock" class="form-control">
+                        <input type="number" name="stock" id="stock" required class="form-control">
                     </div>
                     <div class="form-group my-1">
                         <label for="stock_min">Stock Minimal</label>
-                        <input type="number" name="stock_min" id="stock_min" class="form-control">
+                        <input type="number" name="stock_min" required id="stock_min" class="form-control">
                     </div>
                      <div class="form-group my-1 d-flex flex-column">
                         <div class="d-flex align-items-center">

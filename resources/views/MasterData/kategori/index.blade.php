@@ -1,5 +1,20 @@
 @extends('layouts.app')
 
+@section('header_content')
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Kategori</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+@endsection
+
 @section('content')
     <!-- Main content -->
     <section class="content">
@@ -13,13 +28,15 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             {{-- <x-kategori.form-kategori /> --}}
-                            @if ($errors->any())
+                            {{-- @if ($errors->any())
                                 <div class="alert alert-danger d-flex flex-column">
                                     @foreach ($errors->all() as $error)
                                         <small class="text-white my-2">{{ $error }}</small>
                                     @endforeach
                                 </div>
-                            @endif
+                            @endif --}}
+
+                            @include('components.alert')
 
                             <div class="d-flex justify-content-end mb-2">
 

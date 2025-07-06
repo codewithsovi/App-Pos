@@ -45,8 +45,8 @@
                         </li>
                         <li class="nav-item">
                             <a href="
-                            {{-- {{ route('master-data.produk.index') }} --}}
-                             " class="nav-link {{ request()->routeIs('master-data.produk.*') ? 'active' : ''}}">
+                            {{ route('master-data.produk.index') }}
+                             " class="nav-link {{ request()->routeIs('master-data.produk.index') ? 'active' : ''}}">
                                 <i class="far fa-bookmark"></i>
                                 <p>Produk</p>
                             </a>

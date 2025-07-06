@@ -5,13 +5,10 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Produk</h1>
+                <h1 class="m-0">Daftar Semua Produk</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('master-data.kategori.index') }}">Back</a></li>
-                    <li class="breadcrumb-item active">Kategori</li>
-                </ol>
+
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -26,17 +23,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Kategori {{ $kategoris->nama_kategori }} </h3>
-
+                            <h3 class="card-title">Produk</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-
-                            @include('components.alert')
-
-                            <div class="d-flex justify-content-end mb-2">
-                                @include('MasterData.produk.components.modal-create')
-                            </div>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -48,11 +38,11 @@
                                         <th>Stock</th>
                                         <th>Stock Minimal</th>
                                         <th>Atatus</th>
-                                        <th>Aksi</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($kategoris->produks as $index => $produk)
+                                    @foreach ($produks as $produk)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $produk->sku }}</td>
@@ -62,24 +52,7 @@
                                             <td>{{ $produk->stock }}</td>
                                             <td>{{ $produk->stock_min }}</td>
                                             <td>{{ $produk->is_active }}</td>
-                                            <td class="d-flex justify-content-center">
-                                                <a href="" class="btn btn-primary" data-toggle="modal"
-                                                    data-target="#modal-edit-{{ $produk->id }}">
-                                                    <i class="fas fa-pencil-alt"></i>
-                                                </a>
 
-                                                <form
-                                                    action="{{ route('master-data.produk.destroy', [$produk->id, $kategoris->id]) }}"
-                                                    method="POST" style="display: inline-block;"
-                                                    onsubmit="return confirm('Yakin ingin menghapus produk ini?')">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                            @include('MasterData.produk.components.modal-edit')
                                         </tr>
                                     @endforeach
                                 </tbody>

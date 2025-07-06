@@ -37,8 +37,8 @@ Route::middleware('auth')->group(function () {
                     Route::get('/', 'index')->name('index');
                     Route::get('/kategori/{kategori}', 'byKategori')->name('byKategori');
                     Route::post('/kategori/{kategori}/store', 'store')->name('store');
-                    Route::put('/kategori/{kategori}/update', 'update')->name('update');
-                    Route::delete('/{produk}/destroy', 'destroy')->name('destroy');
+                    Route::delete('/{produk}/kategori/{kategori}/destroy', 'destroy')->name('destroy');
+                    Route::put('/{produk}/kategori/{kategori}/update', 'update')->name('update');
                 });
         });
 });
