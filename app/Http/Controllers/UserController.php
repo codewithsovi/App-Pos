@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -37,9 +38,9 @@ class UserController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email',
             'role' => 'required|in:admin,kasir',
-            'password' => 'required|min:6',
+            'password' => 'nullable|min:6',
         ]);
 
         $user->name = $validated['name'];
@@ -48,6 +49,7 @@ class UserController extends Controller
         if (!empty($validated['password'])) {
             $user->password = bcrypt($validated['password']);
         }
+
         $user->save();
 
         toast()->success('Data berhasil ditambah');
@@ -59,5 +61,26 @@ class UserController extends Controller
         $user->delete();
         toast()->success('Data berhasil dihapus');
         return redirect()->route('user.index');
+    }
+
+    public function update_password(Request $request, User $user)
+    {
+        $request->validate(
+            [
+                'current_password' => ['required'],
+                'new_password' => ['required', 'min:6', 'confirmed'],
+            ],
+            [],
+        );
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'Password lama tidak cocok.']);
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        toast()->success('Passsword diubah');
+        return back();
     }
 }

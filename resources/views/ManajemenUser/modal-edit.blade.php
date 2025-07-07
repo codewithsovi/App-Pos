@@ -3,7 +3,7 @@
     <form action="{{ route('user.update', $user->id) }}" method="POST">
         @csrf
         @method('PUT')
-        
+
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -23,14 +23,14 @@
                     </div>
                     <div class="form-group my-1">
                         <label for="password">Password</label>
-                        <input type="password" name="password" id="password" required class="form-control" >
+                        <input type="password" name="password" id="password" class="form-control" >
                     </div>
                     <div class="form-group">
                         <label for="role">Role</label>
-                        <select class="custom-select rounded-0" id="role" name="role" value="{{ old('role', $user->role) }}">
+                        <select class="custom-select rounded-0" id="role" name="role">
                             <option> </option>
-                            <option>Admin</option>
-                            <option>Kasir</option>
+                            <option value="admin">Admin</option>
+                            <option value="kasir">Kasir</option>
                         </select>
                     </div>
                 </div>

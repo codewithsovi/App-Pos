@@ -30,9 +30,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('user.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="fas fa-user"></i>
                         <p>
-                            Manajemen User
+                            User
                         </p>
                     </a>
                 </li>

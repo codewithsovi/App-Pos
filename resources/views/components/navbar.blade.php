@@ -18,12 +18,26 @@
         </div>
     </div>
 
+    @include('components.alert')
+
     <ul class="navbar-nav ml-auto">
         <!-- Navbar Search -->
-        <li class="nav-item">
-            <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                <button type="submit" class="btn text-danger">Logout</button>
-            </form>
-        </li>
+
+        <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                {{ ucwords(auth()->user()->name) }}
+            </button>
+            <div class="dropdown-menu">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn" data-toggle="modal" data-target="#update-password">
+                    Ubah Password
+                </button>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn text-danger">Logout</button>
+                </form>
+            </div>
+        </div>
 </nav>
+
+@include('components.update-password')

@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/', 'store')->name('store');
             Route::delete('/{user}/destroy', 'destroy')->name('destroy');
             Route::put('/{user}/update', 'update')->name('update');
+            Route::put('/{user}/update_password', 'update_password')->name('update_password');
         });
 
     Route::prefix('master-data')
