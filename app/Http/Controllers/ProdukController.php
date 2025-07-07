@@ -37,6 +37,7 @@ class ProdukController extends Controller
                 'harga_beli_pokok' => 'required|numeric|min:0',
                 'stock' => 'required|numeric|min:0',
                 'stock_min' => 'required|numeric|min:0',
+                'is_active' => 'in:0,1',
             ],
             [
                 'nama_produk.required' => 'nama produk wajib diisi',
@@ -55,7 +56,7 @@ class ProdukController extends Controller
             'harga_beli_pokok' => $request->harga_beli_pokok,
             'stock' => $request->stock,
             'stock_min' => $request->stock_min,
-            'is_active' => $request->is_active ? 'true' : 'false',
+            'is_active' => $request->is_active ?? 0,
             'kategori_id' => $kategori->id,
         ]);
         toast()->success('Data berhasil disimpan');
@@ -71,7 +72,7 @@ class ProdukController extends Controller
                 'harga_beli_pokok' => 'required|numeric|min:0',
                 'stock' => 'required|numeric|min:0',
                 'stock_min' => 'required|numeric|min:0',
-                // 'is_active' => 'required',
+                'is_active' => 'in:0,1',
             ],
             [
                 'nama_produk.required' => 'nama produk wajib diisi',
@@ -89,8 +90,10 @@ class ProdukController extends Controller
         $produk->harga_beli_pokok = $validated['harga_beli_pokok'];
         $produk->stock = $validated['stock'];
         $produk->stock_min = $validated['stock_min'];
-        $produk->is_active = $validated['is_active'] ? 'true' : 'false' ;
+        // $produk->is_active = $validated['is_active'] ?? 0;
+        // $produk->is_active = $validated->boolean('is_active');
         $produk->kategori_id = $kategori->id;
+        $produk->is_active = $request->boolean('is_active');
 
         $produk->save();
 

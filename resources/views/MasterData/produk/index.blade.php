@@ -62,8 +62,8 @@
                                             <td>{{ $produk->stock }}</td>
                                             <td>{{ $produk->stock_min }}</td>
                                             <td>
-                                                <p class="badge {{ $produk->is_active ? 'badge-success' : 'badge-danger' }}">
-                                                    {{ $produk->is_active ? 'Aktif' : 'Tidak Aktif' }}
+                                                <p class="badge">
+                                                    {{ $produk->is_active }}
                                                 </p>
                                             </td>
                                             <td class="d-flex justify-content-center">

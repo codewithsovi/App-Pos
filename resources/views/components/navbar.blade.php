@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    @include('components.alert')
+    {{-- @include('components.alert') --}}
 
     <ul class="navbar-nav ml-auto">
         <!-- Navbar Search -->

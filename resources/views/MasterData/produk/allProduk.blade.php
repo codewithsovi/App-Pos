@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('header_content')
-<div class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0">Daftar Semua Produk</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Daftar Semua Produk</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
 
-            </div><!-- /.col -->
-        </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-</div>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
 @endsection
 
 @section('content')
@@ -37,8 +37,7 @@
                                         <th>Harga Beli Pokok</th>
                                         <th>Stock</th>
                                         <th>Stock Minimal</th>
-                                        <th>Atatus</th>
-
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,8 +50,11 @@
                                             <td>Rp. {{ number_format($produk->harga_beli_pokok) }}</td>
                                             <td>{{ $produk->stock }}</td>
                                             <td>{{ $produk->stock_min }}</td>
-                                            <td>{{ $produk->is_active }}</td>
-
+                                            <td>
+                                                <p class="badge">
+                                                    {{ $produk->is_active }}
+                                                </p>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
