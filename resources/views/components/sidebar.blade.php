@@ -61,6 +61,14 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('penerimaan-barang.index') }}" class="nav-link">
+                        <i class="fas fa-truck-loading"></i>
+                        <p>
+                            Penerimaan Barang
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

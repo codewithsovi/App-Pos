@@ -3,8 +3,10 @@
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PenerimaanBarangController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserController;
+use App\Models\Produk;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -18,6 +20,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+    Route::prefix('get-data')->as('get-data.')->group(function(){
+        route::get('/produk', [ProdukController::class, 'getData'])->name('produk');
+    });
     Route::prefix('user')
         ->as('user.')
         ->controller(UserController::class)
@@ -52,5 +57,12 @@ Route::middleware('auth')->group(function () {
                     Route::delete('/{produk}/kategori/{kategori}/destroy', 'destroy')->name('destroy');
                     Route::put('/{produk}/kategori/{kategori}/update', 'update')->name('update');
                 });
+        });
+
+    Route::prefix('penerimaan-barang')
+        ->as('penerimaan-barang.')
+        ->controller(PenerimaanBarangController::class)
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
         });
 });

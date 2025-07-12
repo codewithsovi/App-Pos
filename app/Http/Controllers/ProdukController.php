@@ -7,6 +7,8 @@ use App\Models\Produk;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Cast\String_;
 
+use function Laravel\Prompts\search;
+
 class ProdukController extends Controller
 {
     public function index()
@@ -106,5 +108,15 @@ class ProdukController extends Controller
         $produk->delete();
         toast()->success('Data berhasil dihapus');
         return redirect()->route('master-data.produk.byKategori', $kategori->id);
+    }
+
+    public function getdata()
+    {
+        $search = request()->query('search');
+
+        $query = Produk::query();
+        $produk = $query->where('nama_produk', 'like', '%' . $search . '%')->get();
+
+        return response()->json($produk);
     }
 }
