@@ -119,4 +119,11 @@ class ProdukController extends Controller
 
         return response()->json($produk);
     }
+
+    public function cekstok(){
+        $id = request()->query('id');
+        $stok = Produk::find($id)->stok;
+
+        return response()->json($stok);
+    }
 }

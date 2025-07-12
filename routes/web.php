@@ -21,8 +21,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::prefix('get-data')->as('get-data.')->group(function(){
-        route::get('/produk', [ProdukController::class, 'getData'])->name('produk');
+        Route::get('/produk', [ProdukController::class, 'getData'])->name('produk');
+        Route::get('cek-stok-produk', [ProdukController::class, 'cekstok'])->name('cekstok');
     });
+
     Route::prefix('user')
         ->as('user.')
         ->controller(UserController::class)
